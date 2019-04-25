@@ -27,4 +27,5 @@ foreach($m->fetchAll() as $row){
 
 //苗字がまず不一致だった
 echo "hoge";
+//hogehogehogehogehoge
 ?>
