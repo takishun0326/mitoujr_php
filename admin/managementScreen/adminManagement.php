@@ -7,13 +7,29 @@
     $pdo = new PDO('mysql:host=localhost;dbname=tenkokko;charset=utf8','root','hogehoge');
 
     //adminIDから参照
-    $req = $pdo->prepare("SELECT * FROM admin where id=?");
-    $req->execute([$adminID]);
-
-    foreach($req->fetchAll() as $row){
-
-    }
-
-//  }
-
+    $req = $pdo->prepare("SELECT * FROM admin");
+    $req->execute();
 ?>
+
+
+<html>
+<head>管理者管理</head>
+<body>
+  <table border="5">
+    <tr>
+      <th>id </th>
+      <th>first name</th>
+      <th>last name </th>
+
+    </tr>
+    <?php foreach($req->fetchAll() as $row){ ?>
+      <tr>
+           <td> <?php echo $row['id']?>  </td>
+           <td> <?php echo $row['firstName'] ?> </td>
+           <td> <?php echo $row['lastName'] ?> </td>
+      </tr>
+    <?php } ?>
+
+  </table>
+</body>
+</html>
