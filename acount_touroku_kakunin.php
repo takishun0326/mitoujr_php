@@ -29,7 +29,7 @@ function mobileId() {
 	else {
 		$mobile_id = $_SERVER['HTTP_USER_AGENT'];
 	}
- 
+
   return $mobile_id;
 }
 $kotai = $pdo->prepare("UPDATE member_list SET 個体識別番号（仮）= :kotai WHERE ユーザーID=:userid");
@@ -46,7 +46,7 @@ foreach($m->fetchAll() as $row){
             echo "hoge";
 ;            exit();
         }else{
-            echo "このアカウントはすでに別の機種で登録されています。";
+            echo "このアカウントはすでに別の端末で登録されています。";
             exit();
         }
     }else{
