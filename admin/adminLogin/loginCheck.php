@@ -1,12 +1,12 @@
 <?php
 
   $enable_referer = "http://localhost/Tenkokko/admin/adminLogin/adminLogin.php";
-  if(!isset($_SERVER['HTTP_REFERER']) || $_SERVER['HTTP_REFERER'] !== $enable_referer){
+//  if(!isset($_SERVER['HTTP_REFERER']) || $_SERVER['HTTP_REFERER'] !== $enable_referer){
     //redirect
-    echo "boo";
+//    echo "boo";
     //header("Location: http://localhost/Tenkokko/admin/adminLogin/adminLogin.php");
 
-  }else{
+//  }else{
 
     $pdo = new PDO('mysql:host=localhost;dbname=tenkokko;charset=utf8','root','hogehoge');
 
@@ -30,5 +30,5 @@
 
     //header('Location: http://localhost/Tenkokko/admin/adminLogin/adminLogin.php');
     //$adminID =$request['adminID'];
-  }
+//  }
 ?>
