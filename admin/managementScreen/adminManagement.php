@@ -59,8 +59,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
   </table>
   <input type="submit" value="変更を更新">
 </form>
-
-  <input type="submit" name = "addManager" onclick = "addManager()"> 
+<form>
+  <input type="text" id="id01" placeholder="id">
+  <input type="text" id="id02" placeholder="firstName">
+  <input type="text" id="id03" placeholder="lastName">
+  <input type="submit" name = "addManager" value = "管理者を追加"  onclick = "addManager()">
+</form>
 
 </body>
 </html>
