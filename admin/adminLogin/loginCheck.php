@@ -27,7 +27,7 @@
           header('Location: http://localhost/Tenkokko/admin/managementScreen/admin.php');
       }
     }
-
+echo "g";
     //header('Location: http://localhost/Tenkokko/admin/adminLogin/adminLogin.php');
     //$adminID =$request['adminID'];
 //  }

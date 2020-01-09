@@ -20,7 +20,7 @@ function mobileId() {
 	else {
 		$mobile_id = $_SERVER['HTTP_USER_AGENT'];
 	}
- 
+
   return $mobile_id;
 }
 /////////////////////////////////////////////////
@@ -33,8 +33,8 @@ foreach($kotai->fetchAll() as $row){
     if($row["個体識別番号（）"] == $mobile_id){
         $user_id=$row["ユーザーID"];
         header("Location: http://localhost/点呼管理/点呼/tenko_test.php");
-        exit;   
-    }     
+        exit;
+    }
 }
 header("Location: http://localhost/点呼管理/acount_touroku_form.php");
     exit;

@@ -5,13 +5,13 @@
     <input type="hidden" name="hidden_input" value=""/>
 </form>
 
-<input type="button" value="点呼をする" onclick="test()"/>
+<input type="button" value="Complete Roll Call" onclick="test()"/>
 </body>
 <script type="text/javascript">
 //35.08191576230813,134.01427586575412津山高専緯度経度
 //
 function test() {
-    navigator.geolocation.getCurrentPosition(test2);
+    test2(navigator.geolocation.getCurrentPosition());
 }
 
 function test2(position) {

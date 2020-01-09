@@ -15,7 +15,7 @@
   <title>管理者画面</title>
   <body>
 
-    <input type = "button" name = "adminReg" onclick="adminManager.php" value="管理者一覧">
+    <input type = "button" name = "adminReg" href="adminManagement.php" value="管理者一覧">
 
   </body>
 </html>
