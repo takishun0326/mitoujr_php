@@ -38,7 +38,6 @@
     <input type="submit" value="Complete Roll Call">
   </form>
 <br/><br/>
-  <p>"LINE bot" cannot be used now...→</p>
 </body>
 
 </html>

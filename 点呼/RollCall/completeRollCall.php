@@ -6,7 +6,7 @@
 
   $m = $pdo->prepare("SELECT * FROM member_list where ユーザーID=?");
   $hoge="example1";
-  $times= 1;
+  $times= 3;
   $m->execute([$hoge]);
 
   $kotai = $pdo->prepare("UPDATE member_list SET 点呼完了=:tenko WHERE ユーザーID=:userid");
