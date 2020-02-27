@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>管理画面ログイン - てんこっこ</title>
+    <title>ユーザー登録 - てんこっこ</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="acount_touroku_form_Design.css">
   </head>
@@ -11,7 +11,7 @@
     <div class="container">
       <form class="login-form" action="loginCheck.php" method="post">
         <fieldset class="control-group">
-          <legend>てんこっこ管理画面ログイン</legend>
+          <legend>てんこっこ ユーザー登録</legend>
           <label class="input-wrapper" id="admin-id">
             <input
               type="text"
@@ -21,7 +21,7 @@
               spellcheck="false"
               required
             >
-            <span class="label">管理者 ID</span>
+            <span class="label">ID</span>
           </label>
           <label class="input-wrapper" id="family-name">
             <input
