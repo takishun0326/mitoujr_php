@@ -9,7 +9,7 @@
   </head>
   <body>
     <div class="container">
-      <form class="login-form" action="loginCheck.php" method="post">
+      <form class="login-form" action="acount_touroku_form.php" method="post">
         <fieldset class="control-group">
           <legend>てんこっこ ユーザー登録</legend>
           <label class="input-wrapper" id="admin-id">
