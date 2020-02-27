@@ -50,7 +50,7 @@ foreach($kotai->fetchAll() as $row){
 	 }
 }
 
-header("Location: https://tenkokko-on-linebot.herokuapp.com/src/tenko/register/acount_touroku_form.php");
+header("Location: https://tenkokko-linebot.herokuapp.com/tenko/register/acount_touroku_form.php");
 exit;
 
 ?>

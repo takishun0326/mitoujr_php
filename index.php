@@ -1,7 +1,7 @@
 <?php
 
-	header("Location: src/othersrc/login_first.php");
-	exit;
-
+	//header("login_first.php");
+	//exit;
+echo "hoge";
 
 ?>
