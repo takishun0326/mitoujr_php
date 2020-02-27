@@ -1,7 +1,6 @@
 <?php
 
-	//header("login_first.php");
-	//exit;
-echo "hoge";
+	header("login_first.php");
+	exit;
 
 ?>
