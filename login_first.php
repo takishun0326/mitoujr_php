@@ -20,22 +20,37 @@ function mobileId() {
 	else {
 		$mobile_id = $_SERVER['HTTP_USER_AGENT'];
 	}
- 
+
   return $mobile_id;
 }
-/////////////////////////////////////////////////
-$pdo = new PDO('mysql:host=localhost;dbname=tenkokko;charset=utf8','root','hogehoge');
+////////////////////////////////////////////////
+//$pdo = new PDO('mysql:host=localhost;dbname=tenkokko;charset=utf8','root','hogehoge');
 
-$kotai = $pdo->prepare("SELECT * FROM member_list where 個体識別番号（仮）=?");
+include("pdo.php");
+/*
+$kotai = $pdo->query("SELECT * FROM memberlist");
+foreach($kotai->fetchAll() as $row){
+	echo $row["id"];
+}
+
+*/
+
+
+
+
+$kotai = $pdo->prepare("SELECT * FROM memberlist where kotaiNum=?");
 $kotai->execute([$mobile_id]);
 
 foreach($kotai->fetchAll() as $row){
-    if($row["個体識別番号（）"] == $mobile_id){
-        $user_id=$row["ユーザーID"];
-        header("Location: http://localhost/点呼管理/点呼/tenko_test.php");
-        exit;   
-    }     
+
+	 if($row["kotaiNum"] == $mobile_id){
+		 $user_id=$row["id"];
+		 header("Location: 点呼/RollCall/tenko_mainPage.php");
+		 exit;
+	 }
 }
-header("Location: http://localhost/点呼管理/acount_touroku_form.php");
-    exit;
+
+header("Location: 点呼/register/acount_touroku_form.php");
+exit;
+
 ?>
