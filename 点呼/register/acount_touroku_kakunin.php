@@ -1,7 +1,7 @@
 <?php
 
 include("../../pdo.php")
-/*
+
 //aocunt_touroku_formから入力データを受け取る
 $userid = $_REQUEST['userID'];
 //$name   = $_REQUEST['name'];
@@ -59,5 +59,5 @@ foreach($m->fetchAll() as $row){
 
 //苗字がまず不一致だった
 echo "ユーザーIDまたはパスワードが一致しません。";
-*/
+
 ?>
