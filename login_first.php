@@ -45,12 +45,12 @@ foreach($kotai->fetchAll() as $row){
 
 	 if($row["kotaiNum"] == $mobile_id){
 		 $user_id=$row["id"];
-		 header("./tenko/RollCall/tenko_mainPage.php");
+		 header("点呼/RollCall/tenko_mainPage.php");
 		 exit;
 	 }
 }
 
-header("Location: https://tenkokko-linebot.herokuapp.com/tenko/register/acount_touroku_form.php");
+header("点呼/register/acount_touroku_form.php");
 exit;
 
 ?>
