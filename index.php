@@ -1,6 +1,6 @@
 <?php
 
-	header("点呼/RollCall/tenko_mainPage.php");
+	header("Location: login_first.php");
 	exit;
 
 ?>
