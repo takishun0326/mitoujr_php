@@ -1,16 +1,15 @@
 <?php
 include("../../kotai_shikibetsu_number.php");
-//$pdo = new PDO('mysql:host=localhost;dbname=tenkokko;charset=utf8','root','hogehoge');
 include("pdo.php");
+
+//$pdo = new PDO('mysql:host=localhost;dbname=tenkokko;charset=utf8','root','hogehoge');
+
 /*
 $kotai = $pdo->query("SELECT * FROM memberlist");
 foreach($kotai->fetchAll() as $row){
 	echo $row["id"];
 }
-
 */
-
-
 
 
 $kotai = $pdo->prepare("SELECT * FROM memberlist where kotaiNum=?");
