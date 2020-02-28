@@ -70,6 +70,15 @@ if($kotaiCheck == "False"){
 	exit();
 
 }
-
-
 ?>
+
+
+<script>
+	// 個体識別番号check
+	var Check = <?php echo $kotaiCheck;?>;
+	// 個体識別番号がかぶっているとき
+	if(Check == "True"){
+		
+	}
+
+</script>
