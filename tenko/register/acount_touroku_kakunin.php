@@ -22,7 +22,7 @@ $Givenname = $_REQUEST['given-name'];
 $pass   = addslashes($_REQUEST['password']);//',￥がエスケープされる可能性がある
 
 //ユーザーIDの最大値を取得
-$maxID =1;// $pdo->query("SELECT MAX(id) FROM memberlist") +1;
+$maxID = $pdo->query("SELECT MAX(id) FROM memberlist") +1;
 
 
 
@@ -32,11 +32,15 @@ if($kotaiCheck == "False"){
 	$insert = $pdo->prepare("INSERT INTO memberlist (id,FamilyName,GivenName,password,RollCallCheck,RollCallCount,kotaiNum)
 		 VALUES(:maxid,:FamilyName,:GivenName,:password,:RollCallCheck,:RollCallCount,:kotaiNum)");
 	$params=array(':maxid' => $maxID,':FamilyName' => $Familyname,':GivenName' => $Givenname,
-	':password'=> $pass,':RollCallCheck' => '0','RollCallCount' => '0', 'kotaiNum' => $mobile_id );
-	echo '登録が完了しました！このページを閉じてください';
+	':password'=> $pass,':RollCallCheck' => 0,'RollCallCount' => 0, 'kotaiNum' => $mobile_id );
 
-// 新しく挿入
+	// 新しく挿入
 	$insert->execute($params);
+
+	//ページ遷移
+	header("Location: acount_touroku_success.php");
+	exit();
+
 }
 
 
