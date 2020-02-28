@@ -43,8 +43,7 @@ if($kotaiCheck == "False"){
 		RollCallCheck = :RollCallCheck,
 		RollCallCount = :RollCallCount,
 		kotaiNum = :kotaiNum
-		where id = (SELECT MAX(id) FROM memberlist)
-		");
+		where id = 3");//(SELECT MAX(id) FROM memberlist)");
 	$params=array(':FamilyName' => $Familyname,':GivenName' => $Givenname,
 	':password'=> $pass,':RollCallCheck' => '0',':RollCallCount' => '0', ':kotaiNum' => $mobile_id );
 
