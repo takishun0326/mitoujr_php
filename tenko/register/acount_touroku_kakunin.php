@@ -27,6 +27,7 @@ $maxID_query = $pdo->query("SELECT * from memberlist");
 $count = 0;
 foreach($maxID_query->fetchAll() as $row){
 		$count++;
+		echo $count;
 }
 
 //echo $nextID;
@@ -57,8 +58,8 @@ if($kotaiCheck == "False"){
 	//ページ遷移
 	header("Location: acount_touroku_success.php");
 	exit();
-*/
-}
 
+}
+*/
 
 ?>
