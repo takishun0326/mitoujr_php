@@ -20,11 +20,11 @@ foreach($kotai->fetchAll() as $row){
 	 if($row["kotaiNum"] == $mobile_id){
 		 $user_id=$row["id"];
 		 header("Location: tenko/RollCall/tenko_mainPage.php");
-		 exit;
+		 exit();
 	 }
 }
 
 header("Location: tenko/register/acount_touroku_form.php");
-exit;
+exit();
 
 ?>
