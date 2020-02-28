@@ -22,11 +22,11 @@ $Givenname = $_REQUEST['given-name'];
 $pass   = addslashes($_REQUEST['password']);//',￥がエスケープされる可能性がある
 
 //ユーザーIDの最大値を取得
-$maxID =intval($pdo->query("SELECT MAX(id) FROM memberlist")->fetchColumn());
-echo $maxID;
-$nextID = var_dump((int)$maxID)+1;
+$maxID_query = $pdo->query("SELECT MAX(id) as id_Max FROM memberlist");
+$maxID = $maxID_query->fetch(PDO::FETCH_ASSOC);
+$nextID = $maxID["id_Max"]+1;
 
-
+echo $nextID;
 /*
 
 // 個体識別番号がかぶっていなかったら
