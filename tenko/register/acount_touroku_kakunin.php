@@ -20,15 +20,15 @@ foreach($kotaiNumCheck->fetchAll() as $row){
 $Familyname   = $_REQUEST['family-name'];
 $Givenname = $_REQUEST['given-name'];
 $pass   = addslashes($_REQUEST['password']);//',￥がエスケープされる可能性がある
-/*
+
 //ユーザーIDの最大値を取得
-$maxID_query = $pdo->query("SELECT MAX(id) as id_Max FROM memberlist");
-$maxID = $maxID_query->fetch(PDO::FETCH_ASSOC);
-$nextID = $maxID["id_Max"]+1
+$maxID_query = $pdo->query("SELECT * FROM memberlist where id = (SELECT MAX(id) from memberlist)");
+//$maxID = $maxID_query->fetch(PDO::FETCH_ASSOC);
+//$nextID = $maxID["id_Max"]+1
 
-echo $nextID;
-*/
+//echo $nextID;
 
+/*
 // 個体識別番号がかぶっていなかったら
 if($kotaiCheck == "False"){
 
@@ -54,7 +54,7 @@ if($kotaiCheck == "False"){
 	//ページ遷移
 	header("Location: acount_touroku_success.php");
 	exit();
-
+*/
 }
 
 
