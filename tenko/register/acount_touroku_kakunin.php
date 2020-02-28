@@ -20,21 +20,21 @@ foreach($kotaiNumCheck->fetchAll() as $row){
 $Familyname   = $_REQUEST['family-name'];
 $Givenname = $_REQUEST['given-name'];
 $pass   = addslashes($_REQUEST['password']);//',￥がエスケープされる可能性がある
-
+/*
 //ユーザーIDの最大値を取得
 $maxID_query = $pdo->query("SELECT MAX(id) as id_Max FROM memberlist");
 $maxID = $maxID_query->fetch(PDO::FETCH_ASSOC);
 $nextID = $maxID["id_Max"]+1;
 
 echo $nextID;
-/*
+*/
 
 // 個体識別番号がかぶっていなかったら
 if($kotaiCheck == "False"){
 	// DBに送信する用
 	$insert = $pdo->prepare("INSERT INTO memberlist (id,FamilyName,GivenName,password,RollCallCheck,RollCallCount,kotaiNum)
-		 VALUES(:maxid,:FamilyName,:GivenName,:password,:RollCallCheck,:RollCallCount,:kotaiNum)");
-	$params=array(':maxid' => 6,':FamilyName' => $Familyname,':GivenName' => $Givenname,
+		 VALUES(MAX(id)+1,:FamilyName,:GivenName,:password,:RollCallCheck,:RollCallCount,:kotaiNum)");
+	$params=array(':FamilyName' => $Familyname,':GivenName' => $Givenname,
 	':password'=> $pass,':RollCallCheck' => 0,'RollCallCount' => 0, 'kotaiNum' => $mobile_id );
 
 	// 新しく挿入
