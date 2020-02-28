@@ -22,11 +22,13 @@ $Givenname = $_REQUEST['given-name'];
 $pass   = addslashes($_REQUEST['password']);//',￥がエスケープされる可能性がある
 
 //ユーザーIDの最大値を取得
-$maxID = $pdo->query("SELECT MAX(id) FROM memberlist");
+$maxID =intval($pdo->query("SELECT MAX(id) FROM memberlist)->fetchColumn())";
 echo $maxID;
 $nextID = var_dump((int)$maxID)+1;
-echo $maxID;
-echo gettype($maxID);
+
+
+/*
+
 // 個体識別番号がかぶっていなかったら
 if($kotaiCheck == "False"){
 	// DBに送信する用
@@ -41,7 +43,7 @@ if($kotaiCheck == "False"){
 	//ページ遷移
 	header("Location: acount_touroku_success.php");
 	exit();
-
+*/
 }
 
 
