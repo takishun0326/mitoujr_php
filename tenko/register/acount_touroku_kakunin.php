@@ -32,8 +32,8 @@ echo $nextID;
 // 個体識別番号がかぶっていなかったら
 if($kotaiCheck == "False"){
 	// DBに送信する用
-	$insert = $pdo->prepare("INSERT INTO memberlist (id,FamilyName,GivenName,password,RollCallCheck,RollCallCount,kotaiNum)
-		 VALUES((SELECT MAX(id)+1 from memberlist),:FamilyName,:GivenName,:password,:RollCallCheck,:RollCallCount,:kotaiNum)");
+	$insert = $pdo->prepare("INSERT INTO memberlist (FamilyName,GivenName,password,RollCallCheck,RollCallCount,kotaiNum)
+		 VALUES(:FamilyName,:GivenName,:password,:RollCallCheck,:RollCallCount,:kotaiNum)");
 	$params=array(':FamilyName' => $Familyname,':GivenName' => $Givenname,
 	':password'=> $pass,':RollCallCheck' => 0,'RollCallCount' => 0, 'kotaiNum' => $mobile_id );
 
