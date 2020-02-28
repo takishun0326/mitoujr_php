@@ -1,20 +1,36 @@
 <?php
-  echo "You completed roll call";
+  include("../../pdo.php");
+  include("../../kotai_shikibetsu_number.php");
 
+// RollCallCheck
+  $rollCallCheck = $pdo->prepare(
+    "UPDATE memberlist
+    SET RollCallCheck = :RollCallCheck
+     WHERE id =
+     (SELECT id FROM
+       (SELECT id FROM memberlist WHERE kotaiNum = :kotaiNum)
+          as tmp)");
+  $params1 = array(':RollCallCheck' => '1', ':kotaiNum' = $mobile_id);
+  $rollCallCheck->execute($params1);
 
-  $pdo = new PDO('mysql:host=localhost;dbname=tenkokko;charset=utf8','root','hogehoge');
-
-  $m = $pdo->prepare("SELECT * FROM member_list where ユーザーID=?");
-  $hoge="example1";
-  $times= 3;
-  $m->execute([$hoge]);
-
-  $kotai = $pdo->prepare("UPDATE member_list SET 点呼完了=:tenko WHERE ユーザーID=:userid");
-  $params=array(':tenko' => $times,':userid' => $hoge);
-
-    $kotai->execute($params);
+  // RollCallCount ++
+  $rollCallCount = $pdo->prepare(
+    "UPDATE memberlist
+      SET RollCallCount =
+        (SELECT RollCallCount + 1 FROM
+  		      (SELECT RollCallCount FROM
+              (SELECT * FROM memberlist WHERE kotaiNum = :kotaiNum1)
+            as tmp1)
+        as tmp2)
+      WHERE id =
+        (SELECT id FROM
+          (SELECT id FROM memberlist WHERE kotaiNum = :kotaiNum2)
+      as tmp3);
+  SELECT * FROM memberlist");
+  $params2 = array(':kotaiNum1' => $mobile_id,':kotaiNum2' => $mobile_id);
+  $rollCallCount->execute($params2);
 ?>
-<html></br><br/></html>
+
 <?php
   echo "It's prototype";
 ?>
