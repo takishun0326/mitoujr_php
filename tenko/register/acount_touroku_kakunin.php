@@ -33,11 +33,18 @@ echo $nextID;
 if($kotaiCheck == "False"){
 
 	//ユーザーIDの最大値を取得
-	//$maxID_query = $pdo->query("INSERT INTO memberlist(id) SELECT MAX(id) + 1 FROM memberlist");
+	$maxID_query = $pdo->query("INSERT INTO memberlist(id) SELECT MAX(id) + 1 FROM memberlist");
 
 	// DBに送信する用
-	$insert = $pdo->prepare("INSERT INTO memberlist (id,FamilyName,GivenName,password,RollCallCheck,RollCallCount,kotaiNum)
-		 VALUES((SELECT coalesce(MAX(id)+1,1) from memberlist),:FamilyName,:GivenName,:password,:RollCallCheck,:RollCallCount,:kotaiNum)");
+	$insert = $pdo->prepare("UPDATE memberlist SET
+		FamilyName = :FamilyName,
+		GivenName = :GivenName,
+		password = :password,
+		RollCallCheck = :RollCallCheck,
+		RollCallCount = RollCallCount,
+		kotaiNum = kotaiNum
+		where id = (SELECT MAX(id) FROM memberlist)
+		");
 	$params=array(':FamilyName' => $Familyname,':GivenName' => $Givenname,
 	':password'=> $pass,':RollCallCheck' => '0','RollCallCount' => '0', 'kotaiNum' => $mobile_id );
 
