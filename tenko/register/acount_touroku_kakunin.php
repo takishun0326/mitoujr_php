@@ -46,7 +46,7 @@ if($kotaiCheck == "False"){
 		where id = (SELECT MAX(id) FROM memberlist)
 		");
 	$params=array(':FamilyName' => $Familyname,':GivenName' => $Givenname,
-	':password'=> $pass,':RollCallCheck' => '0','RollCallCount' => '0', 'kotaiNum' => $mobile_id );
+	':password'=> $pass,':RollCallCheck' => '0',':RollCallCount' => '0', ':kotaiNum' => $mobile_id );
 
 	// 新しく挿入
 	$insert->execute($params);
