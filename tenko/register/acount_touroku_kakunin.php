@@ -33,7 +33,7 @@ echo $nextID;
 if($kotaiCheck == "False"){
 	// DBに送信する用
 	$insert = $pdo->prepare("INSERT INTO memberlist (id,FamilyName,GivenName,password,RollCallCheck,RollCallCount,kotaiNum)
-		 VALUES((SELECT coalesce(MAX(id),'0')+1 FROM memberlist),
+		 VALUES((SELECT coalesce(MAX(id)+1,1)),
 		 :FamilyName,:GivenName,:password,:RollCallCheck,:RollCallCount,:kotaiNum)");
 	$params=array(':FamilyName' => $Familyname,':GivenName' => $Givenname,
 	':password'=> $pass,':RollCallCheck' => 0,'RollCallCount' => 0, 'kotaiNum' => $mobile_id );
