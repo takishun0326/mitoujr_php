@@ -23,7 +23,7 @@ $pass   = addslashes($_REQUEST['password']);//',￥がエスケープされる�
 
 //ユーザーIDの最大値を取得
 $maxID = $pdo->query("SELECT MAX(id) FROM memberlist");
-
+$nextID = var_dump((int)$maxID)+1;
 
 
 // 個体識別番号がかぶっていなかったら
