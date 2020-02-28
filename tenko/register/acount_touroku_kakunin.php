@@ -1,6 +1,6 @@
 <?php
 include("../../pdo.php");
-
+include("../../kotai_shikibetsu_number.php");
 
 //jsで使う Falseは個体識別番号がかぶっていない状態
 $kotaiCheck = "False";
@@ -23,30 +23,6 @@ $pass   = addslashes($_REQUEST['password']);//',￥がエスケープされる�
 
 //ユーザーIDの最大値を取得
 $maxID = $pdo->query("SELECT MAX(id) FROM memberlist") +1;
-
-
-//個体識別番号の変更のためのPDO//////////////////////
-$mobile_id = mobileId();
-function mobileId() {
-	//ドコモ
-	if (isset($_SERVER['HTTP_X_DCMGUID'])) {
-		$mobile_id = $_SERVER['HTTP_X_DCMGUID'];
-	}
-	//Au
-	else if (isset($_SERVER['HTTP_X_UP_SUBNO'])) {
-		$mobile_id = $_SERVER['HTTP_X_UP_SUBNO'];
-	}
-	//ソフトバンク
-	else if (isset($_SERVER['HTTP_X_JPHONE_UID'])) {
-		$mobile_id = $_SERVER['HTTP_X_JPHONE_UID'];
-	}
-	//PC
-	else {
-		$mobile_id = $_SERVER['HTTP_USER_AGENT'];
-	}
-
-  return $mobile_id;
-}
 
 
 
