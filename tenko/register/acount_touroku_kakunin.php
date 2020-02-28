@@ -41,8 +41,8 @@ if($kotaiCheck == "False"){
 		GivenName = :GivenName,
 		password = :password,
 		RollCallCheck = :RollCallCheck,
-		RollCallCount = RollCallCount,
-		kotaiNum = kotaiNum
+		RollCallCount = :RollCallCount,
+		kotaiNum = :kotaiNum
 		where id = (SELECT MAX(id) FROM memberlist)
 		");
 	$params=array(':FamilyName' => $Familyname,':GivenName' => $Givenname,
