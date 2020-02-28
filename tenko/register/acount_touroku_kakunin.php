@@ -26,13 +26,13 @@ $maxID = $pdo->query("SELECT MAX(id) FROM memberlist");
 echo $maxID;
 $nextID = var_dump((int)$maxID)+1;
 echo $maxID;
-
+echo gettype($maxID);
 // 個体識別番号がかぶっていなかったら
 if($kotaiCheck == "False"){
 	// DBに送信する用
 	$insert = $pdo->prepare("INSERT INTO memberlist (id,FamilyName,GivenName,password,RollCallCheck,RollCallCount,kotaiNum)
 		 VALUES(:maxid,:FamilyName,:GivenName,:password,:RollCallCheck,:RollCallCount,:kotaiNum)");
-	$params=array(':maxid' => $maxID,':FamilyName' => $Familyname,':GivenName' => $Givenname,
+	$params=array(':maxid' => 6,':FamilyName' => $Familyname,':GivenName' => $Givenname,
 	':password'=> $pass,':RollCallCheck' => 0,'RollCallCount' => 0, 'kotaiNum' => $mobile_id );
 
 	// 新しく挿入
