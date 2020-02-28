@@ -36,7 +36,7 @@ if($kotaiCheck == "False"){
 	echo '登録が完了しました！このページを閉じてください';
 
 // 新しく挿入
-	$kotai->execute($params);
+	$insert->execute($params);
 }
 
 
