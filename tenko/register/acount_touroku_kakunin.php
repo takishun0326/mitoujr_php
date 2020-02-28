@@ -32,8 +32,9 @@ echo $nextID;
 // 個体識別番号がかぶっていなかったら
 if($kotaiCheck == "False"){
 
-	//ユーザーIDの最大値を取得
+	//ユーザーIDの最大値
 	$maxID_query = $pdo->query("INSERT INTO memberlist(id) SELECT MAX(id) + 1 FROM memberlist");
+	$maxID = $pdo ->query("SELECT MAX(id) FROM memberlist");
 
 	// DBに送信する用
 	$insert = $pdo->prepare("UPDATE memberlist SET
@@ -43,9 +44,9 @@ if($kotaiCheck == "False"){
 		RollCallCheck = :RollCallCheck,
 		RollCallCount = :RollCallCount,
 		kotaiNum = :kotaiNum
-		where id = 3");//(SELECT MAX(id) FROM memberlist)");
+		where id = :maxID");//(SELECT MAX(id) FROM memberlist)");
 	$params=array(':FamilyName' => $Familyname,':GivenName' => $Givenname,
-	':password'=> $pass,':RollCallCheck' => '0',':RollCallCount' => '0', ':kotaiNum' => $mobile_id );
+	':password'=> $pass,':RollCallCheck' => '0',':RollCallCount' => '0', ':kotaiNum' => $mobile_id ,':maxID' => $maxID);
 
 	// 新しく挿入
 	$insert->execute($params);
