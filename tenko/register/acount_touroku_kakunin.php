@@ -1,14 +1,29 @@
 <?php
+include("../../pdo.php");
 
-include("../../pdo.php")
+
+//jsで使う Falseは個体識別番号がかぶっていない状態
+$kotaiCheck = "False";
+$kotaiNumCheck = $pdo->prepare("SELECT * FROM memberlist where kotaiNum = ?");
+$kotaiNumCheck->execute([$mobile_id]);
+
+foreach($kotaiNumCheck->fetchAll() as $row){
+	 if($row["kotaiNum"] == $mobile_id){
+		 // 個体識別番号かぶってるぜ
+		 	$kotaiCheck = "True";
+	 }
+}
+
 
 //aocunt_touroku_formから入力データを受け取る
-$userid = $_REQUEST['userID'];
-//$name   = $_REQUEST['name'];
-$pass   = addslashes($_REQUEST['pass']);//',￥がエスケープされる可能性がある
-//ユーザーIDを元にデータベースから漁る
-$m = $pdo->prepare("SELECT * FROM member_list where ユーザーID=?");
-$m->execute([$userid]);
+// 封印 $userid = $_REQUEST['admin_id'];
+$Familyname   = $_REQUEST['family-name'];
+$Givenname = $_REQUEST['given-name'];
+$pass   = addslashes($_REQUEST['password']);//',￥がエスケープされる可能性がある
+
+//ユーザーIDの最大値を取得
+$maxID = $pdo->query("SELECT MAX(id) FROM memberlist") +1;
+
 
 //個体識別番号の変更のためのPDO//////////////////////
 $mobile_id = mobileId();
@@ -32,32 +47,21 @@ function mobileId() {
 
   return $mobile_id;
 }
-$kotai = $pdo->prepare("UPDATE member_list SET 個体識別番号（仮）= :kotai WHERE ユーザーID=:userid");
-$params=array(':kotai' => $mobile_id,':userid' => $userid);//////////////こっからやるぞいｂ
-/////////////////////////////////////////
-
-$count=0;
-foreach($m->fetchAll() as $row){
-    $count++;
-    if(($row['パスワード']==$pass)&&($row['ユーザーID']==$userid)){
-        if($row['個体識別番号（仮）'] == NULL){
-            echo '登録が完了しました！このページを閉じてください';
-            $kotai->execute($params);
-            echo "hoge";
-;            exit();
-        }else{
-            echo "このアカウントはすでに別の端末で登録されています。";
-            exit();
-        }
-    }else{
-        echo 'ユーザーIDまたはパスワードが一致しません。';
-        exit();
-    }
 
 
+
+// 個体識別番号がかぶっていなかったら
+if($kotaiCheck == "False"){
+	// DBに送信する用
+	$insert = $pdo->prepare("INSERT INTO member_list (id,FamilyName,GivenName,password,RollCallCheck,RollCallCount,kotaiNum)
+		 VALUES(:maxid,:FamilyName,:GivenName,:password,:RollCallCheck,:RollCallCount,:kotaiNum)");
+	$params=array(':maxid' => $maxID,':FamilyName' => $Familyname,':GivenName' => $Givenname,
+	':password'=> $pass,':RollCallCheck' => '0','RollCallCount' => '0', 'kotaiNum' => $mobile_id );
+	echo '登録が完了しました！このページを閉じてください';
+
+// 新しく挿入
+	$kotai->execute($params);
 }
 
-//苗字がまず不一致だった
-echo "ユーザーIDまたはパスワードが一致しません。";
 
 ?>
