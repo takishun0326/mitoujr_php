@@ -21,27 +21,35 @@ $Familyname   = $_REQUEST['family-name'];
 $Givenname = $_REQUEST['given-name'];
 $pass   = addslashes($_REQUEST['password']);//',￥がエスケープされる可能性がある
 
-//ユーザーIDの最大値を取得
-$maxID_query = $pdo->query("SELECT * from memberlist");
-//$maxID = $maxID_query->fetch(PDO::FETCH_ASSOC);
-$count = 0;
-foreach($maxID_query->fetchAll() as $row){
-		$count++;
-		echo $count;
-}
 
-//echo $nextID;
-
-/*
 // 個体識別番号がかぶっていなかったら
 if($kotaiCheck == "False"){
 
+	//ユーザーIDの最大値を取得
+	$maxID_query = $pdo->query("SELECT * from memberlist");
+	//$maxID = $maxID_query->fetch(PDO::FETCH_ASSOC);
+	$count = 0;
+	foreach($maxID_query->fetchAll() as $row){
+			$count++;
+	}
+	$count++;
+	/*
 	//ユーザーIDの最大値
 	$maxID_query = $pdo->query("INSERT INTO memberlist(id) SELECT MAX(id) + 1 FROM memberlist");
 	$maxID = $pdo ->query("SELECT MAX(id) FROM memberlist");
-
+	*/
 	// DBに送信する用
-	$insert = $pdo->prepare("UPDATE memberlist SET
+	$insert = $pdo->prepare("INSERT INTO memberlist(id,FamilyName,GivenName,password,
+		RollCallCheck,RollCallCount,kotaiNum) VALUES(
+			:maxID,
+			:FamilyName,
+			:GivenName,
+			:password,
+			:RollCallCheck,
+			:RollCallCount,
+			:kotaiNum)");
+/*
+		SET
 		FamilyName = :FamilyName,
 		GivenName = :GivenName,
 		password = :password,
@@ -49,8 +57,10 @@ if($kotaiCheck == "False"){
 		RollCallCount = :RollCallCount,
 		kotaiNum = :kotaiNum
 		where id = :maxID");//(SELECT MAX(id) FROM memberlist)");
-	$params=array(':FamilyName' => $Familyname,':GivenName' => $Givenname,
-	':password'=> $pass,':RollCallCheck' => '0',':RollCallCount' => '0', ':kotaiNum' => $mobile_id ,':maxID' => $maxID);
+*/
+
+	$params=array(':maxID' => $count,':FamilyName' => $Familyname,':GivenName' => $Givenname,
+	':password'=> $pass,':RollCallCheck' => '0',':RollCallCount' => '0', ':kotaiNum' => $mobile_id);
 
 	// 新しく挿入
 	$insert->execute($params);
@@ -60,6 +70,6 @@ if($kotaiCheck == "False"){
 	exit();
 
 }
-*/
+
 
 ?>
