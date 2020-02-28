@@ -24,13 +24,17 @@ $pass   = addslashes($_REQUEST['password']);//',￥がエスケープされる�
 //ユーザーIDの最大値を取得
 $maxID_query = $pdo->query("SELECT MAX(id) as id_Max FROM memberlist");
 $maxID = $maxID_query->fetch(PDO::FETCH_ASSOC);
-$nextID = $maxID["id_Max"]+1;
+$nextID = $maxID["id_Max"]+1
 
 echo $nextID;
 */
 
 // 個体識別番号がかぶっていなかったら
 if($kotaiCheck == "False"){
+
+	//ユーザーIDの最大値を取得
+	$maxID_query = $pdo->query("INSERT INTO memberlist(id) SELECT MAX(id) + 1 FROM memberlist");
+/*
 	// DBに送信する用
 	$insert = $pdo->prepare("INSERT INTO memberlist (FamilyName,GivenName,password,RollCallCheck,RollCallCount,kotaiNum)
 		 VALUES(:FamilyName,:GivenName,:password,:RollCallCheck,:RollCallCount,:kotaiNum)");
