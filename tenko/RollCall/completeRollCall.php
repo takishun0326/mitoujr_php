@@ -73,8 +73,11 @@
   if(RollCallCheck == "false"){
     RollCallCheckID.innerHTML = "点呼を完了しました！";
   }else{
-    RollCallCheckID.innerHTML = "点呼を完了しました！現在点呼を完了している回数は"
-    + <?php echo $RollCallTimes; ?> + "回です！";
+    var mainMessage = "点呼を完了しました！現在点呼を完了している回数は";
+    var rollcalltimes = <?php echo $RollCallTimes; ?>;
+    var lastMessage = maiinMessage + rollcallTimes + "回です！";
+
+    RollCallCheckID.innerHTML = lastMessage;
   }
 
 </script>
