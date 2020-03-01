@@ -9,21 +9,25 @@
 
   foreach($tenkoFinishCheck->fetchAll() as $row){
     if($row["RollCallCheck"] == 0){
-
-      // RollCallCheck -> 1
-        $rollCallCheck = $pdo->prepare(
-          "UPDATE memberlist
-          SET RollCallCheck = :RollCallCheck
-           WHERE id =
-           (SELECT id FROM
-             (SELECT id FROM memberlist WHERE kotaiNum = :kotaiNum)
-                as tmp)");
-        $params1 = array(':RollCallCheck' => '1', ':kotaiNum' => $mobile_id);
-        $rollCallCheck->execute($params1);
+      $tenkoFinished = "false";
     }else{
       $tenkoFinished = "true";
     }
   }
+  
+  if($tenkoFinished == "false"){
+    // RollCallCheck -> 1
+      $rollCallCheck = $pdo->prepare(
+        "UPDATE memberlist
+        SET RollCallCheck = :RollCallCheck
+         WHERE id =
+         (SELECT id FROM
+           (SELECT id FROM memberlist WHERE kotaiNum = :kotaiNum)
+              as tmp)");
+      $params1 = array(':RollCallCheck' => '1', ':kotaiNum' => $mobile_id);
+      $rollCallCheck->execute($params1);
+  }
+
 /*
 
   // RollCallCount ++
