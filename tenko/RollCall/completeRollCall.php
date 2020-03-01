@@ -43,15 +43,15 @@
         (SELECT id FROM
           (SELECT id FROM memberlist WHERE kotaiNum = :kotaiNum2)
       as tmp3)");
-$params2 = array(':kotaiNum1' => $mobile_id,':kotaiNum2' => $mobile_id);
-$rollCallCount2->execute($params2);
+  $params2 = array(':kotaiNum1' => $mobile_id,':kotaiNum2' => $mobile_id);
+  $rollCallCount1->execute($params2);
 
 
-$rollCallCount2 = $pdo->prepare("SELECT * FROM memberlist WHERE kotaiNum = ?");
-$rollCallCount2->execute($mobile_id);
-foreach ($rollCallCount2->fetchAll() as $row) {
-  $RollCallTimes = $row["RollCallCount"];
-}
+  $rollCallCount2 = $pdo->prepare("SELECT * FROM memberlist WHERE kotaiNum = ?");
+  $rollCallCount2->execute($mobile_id);
+  foreach ($rollCallCount2->fetchAll() as $row) {
+    $RollCallTimes = $row["RollCallCount"];
+  }
 
 ?>
 
