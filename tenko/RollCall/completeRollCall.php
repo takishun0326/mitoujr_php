@@ -3,7 +3,7 @@
   include("../../kotai_shikibetsu_number.php");
 
   $tenkoFinishCheck = $pdo->prepare("SELECT * FROM memberlist WHERE kotaiNum = ?");
-  $tenkoFinishCheck->execute($mobile_id);
+  $tenkoFinishCheck->execute([$mobile_id]);
 
   $tenkoFinished = "false";
 
