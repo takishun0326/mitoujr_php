@@ -72,7 +72,7 @@
   if(RollCallCheck == "false"){
     document.getElementById("RollCallCheck").textContent = "点呼を完了しました！";
   }else{
-    document.getElementById("RollCallCheck").textContent = "点呼を完了しました！現在点呼を完了している回数は"+  <?php echo $RollCallTimes; ?> +"回です！";
+    document.getElementById("RollCallCheck").textContent = "点呼を完了しました！現在点呼を完了している回数は"+  String(<?php echo $RollCallTimes; ?>) +"回です！";
   }
 
 </script>
