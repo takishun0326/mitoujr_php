@@ -74,7 +74,7 @@
   }else{
     var mainMessage = "点呼を完了しました！現在点呼を完了している回数は";
     var rollcalltimes = <?php echo $RollCallTimes; ?>;
-    var lastMessage = maiinMessage + String(rollcallTimes) + "回です！";
+    var lastMessage = mainMessage + String(rollcalltimes) + "回です！";
     document.getElementById("RollCallCheck").textContent = lastMessage;
   }
 
