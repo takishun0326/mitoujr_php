@@ -42,8 +42,7 @@
       WHERE id =
         (SELECT id FROM
           (SELECT id FROM memberlist WHERE kotaiNum = :kotaiNum2)
-      as tmp3);
-  SELECT * FROM memberlist");
+      as tmp3)");
 $params2 = array(':kotaiNum1' => $mobile_id,':kotaiNum2' => $mobile_id);
 $rollCallCount2->execute($params2);
 
