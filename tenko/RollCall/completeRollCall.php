@@ -64,7 +64,7 @@ foreach ($rollCallCount2->fetchAll() as $row) {
 
 
 <script>
-  var RollCallCheck = <?php echo $tenkoFinished ?>;
+  var RollCallCheck = <?php echo $tenkoFinished; ?>;
   var RollCallCheckID = document.getElementById("RollCallCheck");
 
   if(RollCallCheck == "false"){
