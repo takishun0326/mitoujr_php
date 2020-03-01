@@ -12,7 +12,7 @@
       $tenkoFinished = "false";
     }else{
       $tenkoFinished = "true";
-      $RollCallTimes = $row["RollCallCount"];
+      $RollCallTimes = $row["RollCallCount"] + 1;
     }
   }
 
