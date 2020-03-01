@@ -51,6 +51,7 @@
   $rollCallCount2->execute($mobile_id);
   foreach ($rollCallCount2->fetchAll() as $row) {
     $RollCallTimes = $row["RollCallCount"];
+    echo "hoge";
   }
 echo $RollCallTimes;
 ?>
