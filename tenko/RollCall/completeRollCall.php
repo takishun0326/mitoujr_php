@@ -49,7 +49,7 @@
   $rollCallCount1->execute($params2);
 
 ?>
-
+<style>/*
 
 
 <html>
@@ -62,7 +62,7 @@
 
 
 <script>
-  var RollCallCheck = <?php echo $tenkoFinished; ?>;
+  var RollCallCheck = <?php// echo $tenkoFinished; ?>;
 
   if(RollCallCheck == "false"){
     document.getElementById("RollCallCheck").textContent = "点呼を完了しました！";
@@ -71,3 +71,4 @@
   }
 
 </script>
+*/</style>
