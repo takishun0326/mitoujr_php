@@ -1,5 +1,5 @@
 <?php
-include("../../kotai_shikibetsu_number.php");
+include("kotai_shikibetsu_number.php");
 include("pdo.php");
 
 //$pdo = new PDO('mysql:host=localhost;dbname=tenkokko;charset=utf8','root','hogehoge');
