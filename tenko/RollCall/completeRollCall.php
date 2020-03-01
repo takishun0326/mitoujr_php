@@ -12,6 +12,8 @@
       $tenkoFinished = "false";
     }else{
       $tenkoFinished = "true";
+      echo "hoge";
+      $RollCallTimes = $row["RollCallCount"];
     }
   }
 
@@ -46,13 +48,6 @@
   $params2 = array(':kotaiNum1' => $mobile_id,':kotaiNum2' => $mobile_id);
   $rollCallCount1->execute($params2);
 
-
-  $rollCallCount2 = $pdo->prepare("SELECT * FROM memberlist WHERE kotaiNum = ?");
-  $rollCallCount2->execute($mobile_id);
-  foreach ($rollCallCount2->fetchAll() as $new) {
-    echo "hoge";
-  }
-echo $RollCallTimes;
 ?>
 
 
