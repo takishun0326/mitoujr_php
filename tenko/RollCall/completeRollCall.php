@@ -10,7 +10,7 @@
      (SELECT id FROM
        (SELECT id FROM memberlist WHERE kotaiNum = :kotaiNum)
           as tmp)");
-  $params1 = array(':RollCallCheck' => '1', ':kotaiNum' = $mobile_id);
+  $params1 = array(':RollCallCheck' => '1', ':kotaiNum' => $mobile_id);
   $rollCallCheck->execute($params1);
 
   // RollCallCount ++
