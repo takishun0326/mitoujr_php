@@ -24,7 +24,7 @@
       $tenkoFinished = "true";
     }
   }
-
+/*
 
   // RollCallCount ++
   $rollCallCount1 = $pdo->prepare(
@@ -49,7 +49,7 @@ $rollCallCount2->execute($mobile_id);
 foreach ($rollCallCount2->fetchAll() as $row) {
   $RollCallTimes = $row["RollCallCount"];
 }
-
+*/
 ?>
 
 
@@ -64,14 +64,14 @@ foreach ($rollCallCount2->fetchAll() as $row) {
 
 
 <script>
-  var RollCallCheck = <?php echo $tenkoFinished; ?>;
+  /*var RollCallCheck = <?php //echo $tenkoFinished; ?>;
   var RollCallCheckID = document.getElementById("RollCallCheck");
 
   if(RollCallCheck == "false"){
     RollCallCheckID.innerHTML = "点呼を完了しました！";
   }else{
     RollCallCheckID.innerHTML = "点呼を完了しました！現在点呼を完了している回数は"
-    + <?php echo $RollCallTimes; ?> + "回です！";
+    + <?php //echo $RollCallTimes; ?> + "回です！";
   }
-
+*/
 </script>
