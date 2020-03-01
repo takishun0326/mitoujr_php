@@ -52,7 +52,7 @@
   foreach ($rollCallCount2->fetchAll() as $row) {
     $RollCallTimes = $row["RollCallCount"];
   }
-
+echo $RollCallTimes;
 ?>
 
 
