@@ -68,16 +68,14 @@
 
 <script>
   var RollCallCheck = <?php echo $tenkoFinished; ?>;
-  var RollCallCheckID = document.getElementById("RollCallCheck");
 
   if(RollCallCheck == "false"){
-    RollCallCheckID.innerHTML = "点呼を完了しました！";
+    document.getElementById("RollCallCheck").textContent = "点呼を完了しました！";
   }else{
     var mainMessage = "点呼を完了しました！現在点呼を完了している回数は";
     var rollcalltimes = <?php echo $RollCallTimes; ?>;
-    var lastMessage = maiinMessage + rollcallTimes + "回です！";
-
-    RollCallCheckID.innerHTML = lastMessage;
+    var lastMessage = maiinMessage + String(rollcallTimes) + "回です！";
+    document.getElementById("RollCallCheck").textContent = lastMessage;
   }
 
 </script>
