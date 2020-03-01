@@ -3,7 +3,7 @@
   include("../../kotai_shikibetsu_number.php");
 
   $tenkoFinishCheck = $pdo->prepare("SELECT * FROM memberlist WHERE kotaiNum = ?");
-  $tenkoFinishCheck->execute($kotaiNum);
+  $tenkoFinishCheck->execute($mobile_id);
 
   $tenkoFinished = "false";
 
@@ -14,7 +14,7 @@
       $tenkoFinished = "true";
     }
   }
-  
+
   if($tenkoFinished == "false"){
     // RollCallCheck -> 1
       $rollCallCheck = $pdo->prepare(
