@@ -2,15 +2,15 @@
 include("../../pdo.php");
 include("../../kotai_shikibetsu_number.php");
 
-//jsで使う Falseは個体識別番号がかぶっていない状態
-$kotaiCheck = "False";
+//jsで使う falseは個体識別番号がかぶっていない状態
+$kotaiCheck = "false";
 $kotaiNumCheck = $pdo->prepare("SELECT * FROM memberlist where kotaiNum = ?");
 $kotaiNumCheck->execute([$mobile_id]);
 
 foreach($kotaiNumCheck->fetchAll() as $row){
 	 if($row["kotaiNum"] == $mobile_id){
 		 // 個体識別番号かぶってるぜ
-		 	$kotaiCheck = "True";
+		 	$kotaiCheck = "true";
 	 }
 }
 
@@ -23,43 +23,31 @@ $pass   = addslashes($_REQUEST['password']);//',￥がエスケープされる�
 
 
 // 個体識別番号がかぶっていなかったら
-if($kotaiCheck == "False"){
+if($kotaiCheck == "false"){
 
 	//ユーザーIDの最大値を取得
-	$maxID_query = $pdo->query("SELECT * from memberlist");
-	//$maxID = $maxID_query->fetch(PDO::FETCH_ASSOC);
-	$count = 0;
+	$maxID_query = $pdo->query(
+		"SELECT * FROM memberlist WHERE id =
+			(SELECT id FROM
+				(SELECT MAX(id) FROM memberlist)
+		 as tmp)");
+
 	foreach($maxID_query->fetchAll() as $row){
-			$count++;
+			$nextId = $row["id"] + 1;
 	}
-	$count++;
-	/*
-	//ユーザーIDの最大値
-	$maxID_query = $pdo->query("INSERT INTO memberlist(id) SELECT MAX(id) + 1 FROM memberlist");
-	$maxID = $pdo ->query("SELECT MAX(id) FROM memberlist");
-	*/
+
 	// DBに送信する用
 	$insert = $pdo->prepare("INSERT INTO memberlist(id,FamilyName,GivenName,password,
 		RollCallCheck,RollCallCount,kotaiNum) VALUES(
-			:maxID,
+			:nextID,
 			:FamilyName,
 			:GivenName,
 			:password,
 			:RollCallCheck,
 			:RollCallCount,
 			:kotaiNum)");
-/*
-		SET
-		FamilyName = :FamilyName,
-		GivenName = :GivenName,
-		password = :password,
-		RollCallCheck = :RollCallCheck,
-		RollCallCount = :RollCallCount,
-		kotaiNum = :kotaiNum
-		where id = :maxID");//(SELECT MAX(id) FROM memberlist)");
-*/
 
-	$params=array(':maxID' => $count,':FamilyName' => $Familyname,':GivenName' => $Givenname,
+	$params=array(':nextID' => $nextId,':FamilyName' => $Familyname,':GivenName' => $Givenname,
 	':password'=> $pass,':RollCallCheck' => '0',':RollCallCount' => '0', ':kotaiNum' => $mobile_id);
 
 	// 新しく挿入
@@ -72,13 +60,18 @@ if($kotaiCheck == "False"){
 }
 ?>
 
+<html>
+	<body>
+		<p id = "kotaiCheck">null</p>
+	</body>
+</html>
 
 <script>
 	// 個体識別番号check
-	var Check = <?php echo $kotaiCheck;?>;
+	var Check = "<?php echo $kotaiCheck;?>";
 	// 個体識別番号がかぶっているとき
-	if(Check == "True"){
-		
+	if(Check == "true"){
+		document.getElementById("kotaiCheck").textContent = "個体識別番号かぶっているぜい";
 	}
 
 </script>
