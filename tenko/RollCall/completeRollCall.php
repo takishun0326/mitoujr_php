@@ -52,7 +52,7 @@
 
 <html>
 <body>
-  <p id = "RollCallCheck">NULL</p>
+  <p id = "RollCallCheck">点呼完了メッセージ欄</p>
 </body>
 </html>
 
@@ -60,11 +60,13 @@
 
 
 <script>
-  var RollCallCheck = "<?php echo $tenkoFinished; ?>";
 
+  var RollCallCheck = "<?php echo $tenkoFinished; ?>";
   if(RollCallCheck == "false"){
+    // 初めて点呼をした人
     document.getElementById("RollCallCheck").textContent = "点呼を完了しました！";
   }else{
+    //2回目以降
     document.getElementById("RollCallCheck").textContent = "点呼を完了しました！現在点呼を完了している回数は"+  String(<?php echo $RollCallTimes; ?>) +"回です！";
   }
 
