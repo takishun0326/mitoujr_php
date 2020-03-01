@@ -50,7 +50,6 @@
   $rollCallCount2 = $pdo->prepare("SELECT * FROM memberlist WHERE kotaiNum = ?");
   $rollCallCount2->execute($mobile_id);
   foreach ($rollCallCount2->fetchAll() as $new) {
-    $RollCallTimes = $new["RollCallCount"];
     echo "hoge";
   }
 echo $RollCallTimes;
