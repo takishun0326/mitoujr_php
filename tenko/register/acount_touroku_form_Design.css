@@ -5,30 +5,12 @@
   --lighter-blue: hsl(212, 100%, 65%);
   --light-blue: hsl(212, 100%, 80%);
   --float-label: translateY(-1.75rem) scale(.75);
-  --br: .25rem;
   --duration-1: .15s;
   --duration-2: .2s;
-  --f-smaller: .875rem;
-  --f-small: .75rem;
-}
-
-html {
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  background: #eee;
-  color: #333;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 .note {
-  font-size: var(--f-small);
+  font-size: var(--font-size-7);
   color: #777;
 }
 
@@ -41,30 +23,25 @@ html {
   padding: 1rem;
 }
 
+.form-caption {
+  font-size: var(--font-size-3);
+}
+
 .login-form {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;
-  background: #fff;
-  box-shadow: 1px 2px 4px rgba(0, 0, 0, .15);
-  padding: 3rem;
-  border-radius: var(--br);
+  padding: 3rem 2rem;
   margin: 2rem 0;
   width: 100%;
   max-width: 24rem;
+  border: 1px solid #eee;
+  border-radius: var(--border-radius-3);
+  background: #fff;
+  box-shadow: 13px 13px 26px #dedede,
+              -13px -13px 26px #fff;
 }
 
-.control-group {
-  display: contents;
-}
-
-.control-group > legend {
-  margin: auto;
-  font-size: 1.25rem;
-  margin-bottom: 1rem;
-}
-
-.control-group > legend,
 #admin-id,
 #password,
 .login-button {
@@ -96,9 +73,9 @@ html {
 
 .input-wrapper .label {
   position: absolute;
-  bottom: var(--f-small);
+  bottom: 14px;
   left: 0;
-  font-size: 1rem;
+  line-height: 1rem;
   color: #9098a9;
   transform-origin: left;
   transition: var(--duration-2);
@@ -110,9 +87,8 @@ html {
   -webkit-appearance: none;
   width: 100%;
   border: 0;
-  font-family: inherit;
-  padding: var(--f-small) 0;
-  font-size: 1rem;
+  padding: 12px 0;
+  line-height: 1rem;
   border-bottom: 2px solid #c8ccd4;
   color: #223254;
   transition: var(--duration-1);
@@ -138,9 +114,8 @@ html {
   margin-top: 1rem;
   background: var(--blue);
   color: #fff;
-  padding: var(--f-smaller);
-  border-radius: var(--br);
-  font-size: 1rem;
+  padding: 14px;
+  border-radius: var(--border-radius-2);
   cursor: pointer;
   transition: background var(--duration-1), box-shadow var(--duration-2);
   outline: 0;
