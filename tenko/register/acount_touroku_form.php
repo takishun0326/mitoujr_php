@@ -17,7 +17,7 @@ include "$root/components/head.php";
           spellcheck="false"
           required
           disabled
-          value="0000000"
+          value="0"
         >
         <span class="label">ID</span>
       </label>
