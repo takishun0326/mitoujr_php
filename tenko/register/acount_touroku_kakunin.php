@@ -54,7 +54,7 @@ if($kotaiCheck == "false"){
 	$insert->execute($params);
 
 	//ページ遷移
-	header("Location: acount_touroku_success.php");
+	header("Location: account_touroku_success.php");
 	exit();
 
 }
