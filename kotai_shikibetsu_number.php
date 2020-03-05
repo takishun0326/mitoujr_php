@@ -1,9 +1,7 @@
 <?php
- 
+
 $mobile_id = mobileId();
- 
-echo $mobile_id;
- 
+
 //個体識別番号取得関数
 function mobileId() {
 	//ドコモ
@@ -22,6 +20,8 @@ function mobileId() {
 	else {
 		$mobile_id = $_SERVER['HTTP_USER_AGENT'];
 	}
- 
+
   return $mobile_id;
 }
+
+?>
