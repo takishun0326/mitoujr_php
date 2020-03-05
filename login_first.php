@@ -19,7 +19,7 @@ foreach($kotai->fetchAll() as $row){
 
 	 if($row["kotaiNum"] == $mobile_id){
 		 $user_id=$row["id"];
-		 header("Location: tenko/RollCall/tenko_mainPage.php");
+		 header("Location: tenko/RollCall/completeRollCall.php");
 		 exit();
 	 }
 }
