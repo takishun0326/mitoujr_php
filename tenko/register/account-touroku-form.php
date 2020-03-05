@@ -3,7 +3,7 @@ $title = '利用者登録';
 $root = $_SERVER['DOCUMENT_ROOT'];
 include "$root/components/head.php";
 ?>
-<link rel="stylesheet" href="account-touroku-form-Design.css">
+<link rel="stylesheet" href="/styles/form.css">
 <body>
   <div class="container">
     <h1 class="form-caption">てんこっこ 利用者登録</h1>
@@ -12,14 +12,13 @@ include "$root/components/head.php";
         <input
           type="number"
           name="admin-id"
-          placeholder="&nbsp;"
+          placeholder="入力不要"
           autocomplete="off"
           spellcheck="false"
           required
           disabled
-          value="0"
         >
-        <span class="label">ID</span>
+        <!-- <span class="label">ID</span> -->
       </label>
       <label class="input-wrapper" id="family-name">
         <input
