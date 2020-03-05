@@ -1,5 +1,5 @@
 <?php
-include("kotai_shikibetsu_number.php");
+include("kotai-shikibetsu-number.php");
 include("pdo.php");
 
 //$pdo = new PDO('mysql:host=localhost;dbname=tenkokko;charset=utf8','root','hogehoge');
@@ -19,12 +19,12 @@ foreach($kotai->fetchAll() as $row){
 
 	 if($row["kotaiNum"] == $mobile_id){
 		 $user_id=$row["id"];
-		 header("Location: tenko/RollCall/completeRollCall.php");
+		 header("Location: tenko/RollCall/complete-RollCall.php");
 		 exit();
 	 }
 }
 
-header("Location: tenko/register/acount_touroku_form.php");
+header("Location: tenko/register/account-touroku-form.php");
 exit();
 
 ?>

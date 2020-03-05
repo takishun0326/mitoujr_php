@@ -1,6 +1,6 @@
 <?php
 
-	header("Location: login_first.php");
+	header("Location: login-first.php");
 	exit;
 
 ?>
