@@ -1,6 +1,6 @@
 <?php
   include("../../pdo.php");
-  include("../../kotai_shikibetsu_number.php");
+  include("../../kotai-shikibetsu-number.php");
 
   $tenkoFinishCheck = $pdo->prepare("SELECT * FROM memberlist WHERE kotaiNum = ?");
   $tenkoFinishCheck->execute([$mobile_id]);
