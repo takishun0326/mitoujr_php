@@ -1,14 +1,3 @@
-:root {
-  --float-label: translateY(-1.75rem) scale(.75);
-  --duration-1: .15s;
-  --duration-2: .2s;
-  --dark-blue: hsl(203, 96%, 23%);
-  --darker-blue: hsl(203, 96%, 33%);
-  --blue: hsl(203, 96%, 43%);
-  --lighter-blue: hsl(203, 96%, 53%);
-  --light-blue: hsl(203, 96%, 63%);
-}
-
 .note {
   font-size: var(--font-size-7);
   color: #808080;
