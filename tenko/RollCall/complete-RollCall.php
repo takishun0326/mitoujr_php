@@ -49,25 +49,26 @@
 
 ?>
 
-
-<html>
+<!-- View -->
+<?php
+$title = '点呼完了';
+$root = $_SERVER['DOCUMENT_ROOT'];
+include "$root/components/head.php";
+?>
 <body>
-  <p id = "RollCallCheck">点呼完了メッセージ欄</p>
+  <p id="RollCallCheck">点呼完了メッセージ欄</p>
+  <form>
+    <input type="text" name="id" placeholder="ID">
+    <textarea name="comment"></textarea>
+  </form>
+  <script>
+    const RollCallCheck = '<?php echo $tenkoFinished ?>';
+    if (RollCallCheck === 'false') {
+      // 初めて点呼した人
+      document.getElementById('RollCallCheck').textContent = '点呼を完了しました！';
+    } else {
+      // 2回目以降
+      document.getElementById('RollCallCheck').textContent = '点呼を完了しました！現在点呼を完了している回数は ' + String(<?php echo $RollCallTimes; ?>) + ' 回です！';
+    }
+  </script>
 </body>
-</html>
-
-
-
-
-<script>
-
-  var RollCallCheck = "<?php echo $tenkoFinished; ?>";
-  if(RollCallCheck == "false"){
-    // 初めて点呼をした人
-    document.getElementById("RollCallCheck").textContent = "点呼を完了しました！";
-  }else{
-    //2回目以降
-    document.getElementById("RollCallCheck").textContent = "点呼を完了しました！現在点呼を完了している回数は"+  String(<?php echo $RollCallTimes; ?>) +"回です！";
-  }
-
-</script>
