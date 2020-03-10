@@ -60,18 +60,20 @@ if($kotaiCheck == "false"){
 }
 ?>
 
-<html>
-	<body>
-		<p id = "kotaiCheck">null</p>
-	</body>
-</html>
-
-<script>
-	// 個体識別番号check
-	var Check = "<?php echo $kotaiCheck;?>";
-	// 個体識別番号がかぶっているとき
-	if(Check == "true"){
-		document.getElementById("kotaiCheck").textContent = "個体識別番号が被っています";
-	}
-
-</script>
+<!-- View -->
+<?php
+$title = '確認';
+$root = $_SERVER['DOCUMENT_ROOT'];
+include "$root/components/head.php";
+?>
+<body>
+	<p id="kotaiCheck">null</p>
+	<script>
+		// 個体識別番号をチェック
+		const check = "<?php echo $kotaiCheck; ?>";
+		// 個体識別番号が被っているとき
+		if (check === 'true') {
+			document.getElementById('kotaiCheck').textContent = '個体識別番号が被っています';
+		}
+	</script>
+</body>
