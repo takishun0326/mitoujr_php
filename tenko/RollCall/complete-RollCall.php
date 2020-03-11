@@ -60,7 +60,7 @@ include "$root/components/head.php";
 <body>
   <div class="container">
     <p id="RollCallCheck" class="form-caption">点呼完了メッセージ欄</p>
-    <form class="form">
+    <form class="form" action="../questionnaire/send-questionnaire.php" method="post">
       <textarea name="comment" placeholder="良ければご意見・改善点などをお聞かせください"></textarea>
       <button type="submit" class="button">送信</button>
     </form>

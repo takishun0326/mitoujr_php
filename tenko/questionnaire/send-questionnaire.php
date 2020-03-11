@@ -3,7 +3,7 @@
 
   // アンケート内容が入るとこ
   // アンケートタグのnameを""の中と同期
-  $Comment = $_REQUEST["questionnaire"];
+  $Comment = $_REQUEST["comment"];
 
 
   $IDcheck = $pdo->query(
@@ -20,4 +20,5 @@
   $params = array(":id" => $nextID,":comment" => $Comment);
   $setting->execute($params);
 
+ include("thanks.php");
 ?>
