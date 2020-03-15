@@ -41,7 +41,9 @@
 
     $add_manager = $pdo->prepare(
       "INSERT INTO adminlist(id,family_name,given_name,password)
-     VALUES((SELECT MAX(id) FROM adminlist ):family_name,:given_name,:password)");
+     VALUES((SELECT Max(id)+1 FROM
+     (SELECT * FROM adminlist )as TEMP),
+      :family_name,:given_name,:password)");
 
     $params = array(":family_name" => $add_fName,"given_name" => $add_gName,":password" => $add_pass);
     $add_manager->execute($params);
