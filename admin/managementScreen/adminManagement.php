@@ -15,7 +15,7 @@ $enable_referer = "$root/admin/managementScreen/admin.php";
 <html>
 <head>管理者管理</head>
 <body>
-  <form method="post">
+  <form action ="adminManagement.php" method="post">
   <table border="5">
     <tr>
       <th>id </th>
@@ -26,15 +26,15 @@ $enable_referer = "$root/admin/managementScreen/admin.php";
     <?php foreach($req->fetchAll() as $row){ ?>
       <tr>
            <td ><input type = "text" name="id[]" size = "1"  value=<?php echo $row['id']?>>  </td>
-           <td ><input type = "text" name="family-name[]" size = "10" value=<?php echo $row['firstName'] ?> contenteditable="true"> </td>
-           <td ><input type = "text" name= "given-name[]" size = "10" value=<?php echo $row['lastName'] ?> contenteditable="true"> </td>
+           <td ><input type = "text" name="family-name[]" size = "10" value=<?php echo $row['family-name'] ?> contenteditable="true"> </td>
+           <td ><input type = "text" name= "given-name[]" size = "10" value="<?php echo $row['given-name'] ?>" contenteditable="true"> </td>
       </tr>
     <?php } ?>
 
   </table>
   <input type="submit" value="変更を更新" onClick="updateManager()">
 </form>
-<form method="post">
+<form action ="adminManagement.php" method="post">
   <input type="text" name="add-family-name" placeholder="family-name">
   <input type="text" name="add-given-name" placeholder="given-name">
   <input type="submit" value = "管理者を追加"  onclick = "addManager()">
