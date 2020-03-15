@@ -1,5 +1,6 @@
 <?php
-
+$root = $_SERVER['DOCUMENT_ROOT'];
+include("$root/pdo.php");
 $enable_referer = "$root/admin/managementScreen/admin.php";
 
 //function
