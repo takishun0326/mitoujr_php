@@ -32,14 +32,19 @@
 
   // admin追加
   function addManager(){
-
     $root = $_SERVER['DOCUMENT_ROOT'];
     include("$root/pdo.php");
 
-    $add_manager = $pdo->prepare(
-      "INSERT INTO adminlist(id,family_name,given_name,password)
-     VALUES(:id,:family_name,:given_name,:password)");
+    $add_fName = $_REQUEST["add-family-name"];
+    $add_gName = $_REQUEST["add-given-name"];
+    $add_pass = $_REQUEST["add-password"];
 
+    $add_manager = $pdo->prepare(
+      "INSERT INTO adminlist(family_name,given_name,password)
+     VALUES(:family_name,:given_name,:password)");
+
+    $params = array(":family_name" => $add_fName,"given_name" => $add_gName,":password" => $add_pass);
+    $add_manager->execute($params);
   }
 
       //adminIDから参照
@@ -80,6 +85,7 @@
 <form action ="adminManagement.php" method="post">
   <input type="text" name="add-family-name" placeholder="family-name">
   <input type="text" name="add-given-name" placeholder="given-name">
+  <input type="text" name="add-password" placeholder="password">
 
   <input type="hidden" value="ADD" name="update-manager">
   <input type="submit" value = "管理者を追加"  onclick = "addManager()">
