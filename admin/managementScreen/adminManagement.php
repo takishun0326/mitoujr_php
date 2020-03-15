@@ -40,8 +40,8 @@
     $add_pass = $_REQUEST["add-password"];
 
     $add_manager = $pdo->prepare(
-      "INSERT INTO adminlist(family_name,given_name,password)
-     VALUES(:family_name,:given_name,:password)");
+      "INSERT INTO adminlist(id,family_name,given_name,password)
+     VALUES((SELECT MAX(id) FROM adminlist ):family_name,:given_name,:password)");
 
     $params = array(":family_name" => $add_fName,"given_name" => $add_gName,":password" => $add_pass);
     $add_manager->execute($params);
@@ -52,17 +52,27 @@
       $checkOption = $_REQUEST["update-manager"];
       if($checkOption == "update"){
         updateManager();
-      }else{
+      }else if($checkOption == "ADD"){
         addManager();
       }
     }
     $req = $pdo->query("SELECT * FROM adminlist");
 ?>
 
+<?php
+  function autoIncrementReset(){
+    $root = $_SERVER['DOCUMENT_ROOT'];
+    include("$root/pdo.php");
+
+    $pdo->query("ALTER TABLE adminlist auto_increment = 1");
+  }
+?>
 
 <html>
 <head>管理者管理</head>
 <body>
+  <input type="submit" value="auto increment reset" onClick="autoIncrementReset()">
+
   <form action ="adminManagement.php" method="post">
   <table border="5">
     <tr>
