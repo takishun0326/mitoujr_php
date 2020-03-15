@@ -8,7 +8,7 @@ $enable_referer = "$root/admin/managementScreen/admin.php";
   //  header("Location: http://localhost/Tenkokko/admin/adminLogin/adminLogin.php");
 //  }else{
     //adminIDから参照
-
+    $req = $pdo->query("SELECT * FROM adminlist");
 ?>
 
 
