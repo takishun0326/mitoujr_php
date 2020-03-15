@@ -14,7 +14,7 @@
 <html>
   <title>管理者画面</title>
   <body>
-
+    <input type = "button" name = "locationSetting" href="locationSetting.php" value="位置情報設定">
     <input type = "button" name = "adminReg" href="adminManagement.php" value="管理者一覧">
 
   </body>
