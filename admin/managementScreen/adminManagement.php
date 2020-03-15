@@ -1,55 +1,56 @@
 <?php
-$root = $_SERVER['DOCUMENT_ROOT'];
-include("$root/pdo.php");
-$enable_referer = "$root/admin/managementScreen/admin.php";
-
-//function
-function updateManager(){
-
   $root = $_SERVER['DOCUMENT_ROOT'];
   include("$root/pdo.php");
+  $enable_referer = "$root/admin/managementScreen/admin.php";
+  //  if(!isset($_SERVER['HTTP_REFERER']) || $_SERVER['HTTP_REFERER'] !== $enable_referer){
+    //redirect
+    //  header("Location: http://localhost/Tenkokko/admin/adminLogin/adminLogin.php");
+  //  }else{
 
-  $arrayID = $_REQUEST["id"];
-  $array_fName = $_REQUEST["family-name"];
-  $array_gName = $_REQUEST["given-name"];
-  //print_r($arrayID);
+  //function
+  function updateManager(){
 
-  for($i=0; $i<count($arrayID);$i++){
+    $root = $_SERVER['DOCUMENT_ROOT'];
+    include("$root/pdo.php");
 
-    $checkDB = $pdo->prepare("SELECT * from adminlist where id = ?");
-    $checkDB->execute([$arrayID[$i]]);
-    $check_fName = $pdo->prepare("UPDATE adminlist set family_name = :Fname where id = :id");
-    $check_gName = $pdo->prepare("UPDATE adminlist set given_name = :Gname where id = :id");
+    $arrayID = $_REQUEST["id"];
+    $array_fName = $_REQUEST["family-name"];
+    $array_gName = $_REQUEST["given-name"];
+    //print_r($arrayID);
 
-  //  if($checkDB["firstName"] != $array_FName[$i]){
-  //    $check_FName->execute([$array_FName[$i], $arrayID]);
-  //  }
-    $check_fName->execute(array(":Fname"=> $array_fName[$i],":id"=>$arrayID[$i]));
-    $check_gName->execute(array(":Gname"=> $array_gName[$i],":id"=>$arrayID[$i]));
-  }
+    for($i=0; $i<count($arrayID);$i++){
 
-}
+      $checkDB = $pdo->prepare("SELECT * from adminlist where id = ?");
+      $checkDB->execute([$arrayID[$i]]);
+      $check_fName = $pdo->prepare("UPDATE adminlist set family_name = :Fname where id = :id");
+      $check_gName = $pdo->prepare("UPDATE adminlist set given_name = :Gname where id = :id");
 
-function addManager(){
-
-  $root = $_SERVER['DOCUMENT_ROOT'];
-  include("$root/pdo.php");
-
-  echo "hoge";
-}
-//  if(!isset($_SERVER['HTTP_REFERER']) || $_SERVER['HTTP_REFERER'] !== $enable_referer){
-  //redirect
-  //  header("Location: http://localhost/Tenkokko/admin/adminLogin/adminLogin.php");
-//  }else{
-    //adminIDから参照
-  if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $checkOption = $_REQUEST["update-manager"];
-    if($checkOption == "update"){
-      updateManager();
-    }else{
-      addManager();
+      $check_fName->execute(array(":Fname"=> $array_fName[$i],":id"=>$arrayID[$i]));
+      $check_gName->execute(array(":Gname"=> $array_gName[$i],":id"=>$arrayID[$i]));
     }
   }
+
+  // admin追加
+  function addManager(){
+
+    $root = $_SERVER['DOCUMENT_ROOT'];
+    include("$root/pdo.php");
+
+    $add_manager = $pdo->prepare(
+      "INSERT INTO adminlist(id,family_name,given_name,password)
+     VALUES(:id,:family_name,:given_name,:password)");
+
+  }
+
+      //adminIDから参照
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+      $checkOption = $_REQUEST["update-manager"];
+      if($checkOption == "update"){
+        updateManager();
+      }else{
+        addManager();
+      }
+    }
     $req = $pdo->query("SELECT * FROM adminlist");
 ?>
 
