@@ -75,7 +75,7 @@
 <body>
   <input type="submit" value="auto increment reset" onClick="autoIncrementReset()">
 
-  <form action ="adminManagement.php" method="post">
+  <form action ="adminManagement.php" method="post" autocomplete="off">
   <table border="5">
     <tr>
       <th>id </th>
@@ -94,7 +94,7 @@
   </table>
   <input type="submit" value="変更を更新" onClick="updateManager()">
 </form>
-<form action ="adminManagement.php" method="post">
+<form action ="adminManagement.php" method="post" autocomplete="off">
   <input type="text" name="add-family-name" placeholder="family-name">
   <input type="text" name="add-given-name" placeholder="given-name">
   <input type="text" name="add-password" placeholder="password">
