@@ -11,7 +11,7 @@ function updateManager(){
 
   $arrayID = $_REQUEST["id"];
   $array_fName = $_REQUEST["family-name"];
-  $array_gName = $_REQUEST["give-name"];
+  $array_gName = $_REQUEST["given-name"];
   //print_r($arrayID);
 
   for($i=0; $i<count($arrayID);$i++){
