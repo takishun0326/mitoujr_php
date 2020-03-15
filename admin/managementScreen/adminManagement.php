@@ -38,9 +38,9 @@ function addManager(){
   if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $checkOption = $_REQUEST["update-manager"];
     if($checkOption == "update"){
-      updateManager();
+      echo "update";
     }else{
-      addManager();
+      echo "add";
     }
   }
     $req = $pdo->query("SELECT * FROM adminlist");
