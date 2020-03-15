@@ -3,23 +3,22 @@ $title = '利用者登録';
 $root = $_SERVER['DOCUMENT_ROOT'];
 include "$root/components/head.php";
 ?>
-<link rel="stylesheet" href="acount_touroku_form_Design.css">
+<link rel="stylesheet" href="/styles/form.css">
 <body>
   <div class="container">
     <h1 class="form-caption">てんこっこ 利用者登録</h1>
-    <form class="login-form" action="acount_touroku_kakunin.php" method="post">
+    <form class="login-form" action="account-touroku-kakunin.php" method="post">
       <label class="input-wrapper" id="admin-id">
         <input
           type="number"
           name="admin-id"
-          placeholder="&nbsp;"
+          placeholder="入力不要"
           autocomplete="off"
           spellcheck="false"
           required
           disabled
-          value="0"
         >
-        <span class="label">ID</span>
+        <!-- <span class="label">ID</span> -->
       </label>
       <label class="input-wrapper" id="family-name">
         <input

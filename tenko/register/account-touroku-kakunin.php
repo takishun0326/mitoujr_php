@@ -1,6 +1,6 @@
 <?php
 include("../../pdo.php");
-include("../../kotai_shikibetsu_number.php");
+include("../../kotai-shikibetsu-number.php");
 
 //jsで使う falseは個体識別番号がかぶっていない状態
 $kotaiCheck = "false";
@@ -54,24 +54,26 @@ if($kotaiCheck == "false"){
 	$insert->execute($params);
 
 	//ページ遷移
-	header("Location: account_touroku_success.php");
+	header("Location: account-touroku-success.php");
 	exit();
 
 }
 ?>
 
-<html>
-	<body>
-		<p id = "kotaiCheck">null</p>
-	</body>
-</html>
-
-<script>
-	// 個体識別番号check
-	var Check = "<?php echo $kotaiCheck;?>";
-	// 個体識別番号がかぶっているとき
-	if(Check == "true"){
-		document.getElementById("kotaiCheck").textContent = "個体識別番号かぶっているぜい";
-	}
-
-</script>
+<!-- View -->
+<?php
+$title = '確認';
+$root = $_SERVER['DOCUMENT_ROOT'];
+include "$root/components/head.php";
+?>
+<body>
+	<p id="kotaiCheck">null</p>
+	<script>
+		// 個体識別番号をチェック
+		const check = "<?php echo $kotaiCheck; ?>";
+		// 個体識別番号が被っているとき
+		if (check === 'true') {
+			document.getElementById('kotaiCheck').textContent = '個体識別番号が被っています';
+		}
+	</script>
+</body>
