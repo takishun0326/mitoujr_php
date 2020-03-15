@@ -18,8 +18,8 @@ function updateManager(){
 
     $checkDB = $pdo->prepare("SELECT * from adminlist where id = ?");
     $checkDB->execute([$arrayID[$i]]);
-    $check_fName = $pdo->prepare("UPDATE adminlist set family-name = :Fname where id = :id");
-    $check_gName = $pdo->prepare("UPDATE adminlist set given-name = :Gname where id = :id");
+    $check_fName = $pdo->prepare("UPDATE adminlist set family_name = :Fname where id = :id");
+    $check_gName = $pdo->prepare("UPDATE adminlist set given_name = :Gname where id = :id");
 
   //  if($checkDB["firstName"] != $array_FName[$i]){
   //    $check_FName->execute([$array_FName[$i], $arrayID]);
