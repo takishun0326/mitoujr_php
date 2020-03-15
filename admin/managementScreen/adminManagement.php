@@ -1,11 +1,13 @@
 <?php
 
-$root = $_SERVER['DOCUMENT_ROOT'];
-include("$root/pdo.php");
 $enable_referer = "$root/admin/managementScreen/admin.php";
 
 //function
 function updateManager(){
+
+  $root = $_SERVER['DOCUMENT_ROOT'];
+  include("$root/pdo.php");
+
   $arrayID = $_REQUEST["id"];
   $array_fName = $_REQUEST["family-name"];
   $array_gName = $_REQUEST["give-name"];
@@ -28,6 +30,10 @@ function updateManager(){
 }
 
 function addManager(){
+
+  $root = $_SERVER['DOCUMENT_ROOT'];
+  include("$root/pdo.php");
+
   echo "hoge";
 }
 //  if(!isset($_SERVER['HTTP_REFERER']) || $_SERVER['HTTP_REFERER'] !== $enable_referer){
@@ -38,9 +44,9 @@ function addManager(){
   if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $checkOption = $_REQUEST["update-manager"];
     if($checkOption == "update"){
-      echo "update";
+      updateManager();
     }else{
-      echo "add";
+      addManager();
     }
   }
     $req = $pdo->query("SELECT * FROM adminlist");
