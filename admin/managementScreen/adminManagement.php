@@ -37,7 +37,7 @@ function addManager(){
     //adminIDから参照
   if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $checkOption = $_REQUEST["update-manager"];
-    if($checkOption == "UPDATE"){
+    if($checkOption == "update"){
       updateManager();
     }else{
       addManager();
@@ -65,7 +65,7 @@ function addManager(){
            <td ><input type = "text" name= "given-name[]" size = "10" value="<?php echo $row['given-name'] ?>" contenteditable="true"> </td>
       </tr>
     <?php } ?>
-    <input type="hidden" value="UPDATE" name="update-manager">
+    <input type="hidden" value="update" name="update-manager">
   </table>
   <input type="submit" value="変更を更新" onClick="updateManager()">
 </form>
