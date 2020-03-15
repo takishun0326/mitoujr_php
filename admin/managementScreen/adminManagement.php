@@ -68,8 +68,8 @@ function addManager(){
     <?php foreach($req->fetchAll() as $row){ ?>
       <tr>
            <td ><input type = "text" name="id[]" size = "1"  value=<?php echo $row['id']?>>  </td>
-           <td ><input type = "text" name="family-name[]" size = "10" value=<?php echo $row['family-name'] ?> contenteditable="true"> </td>
-           <td ><input type = "text" name= "given-name[]" size = "10" value="<?php echo $row['given-name'] ?>" contenteditable="true"> </td>
+           <td ><input type = "text" name="family-name[]" size = "10" value=<?php echo $row['family_name'] ?> contenteditable="true"> </td>
+           <td ><input type = "text" name= "given-name[]" size = "10" value="<?php echo $row['given_name'] ?>" contenteditable="true"> </td>
       </tr>
     <?php } ?>
     <input type="hidden" value="update" name="update-manager">
