@@ -14,8 +14,8 @@
     foreach($req->fetchAll() as $row){
 
       //全て一致するなら
-      if($row['id']==$adminID && $row['family-name']==$family_name
-      && $row['given-name']==$given_name && $row['password']==$password){
+      if($row['id']==$adminID && $row['family_name']==$family_name
+      && $row['given_name']==$given_name && $row['password']==$password){
         //login
           header('Location: ../managementScreen/admin.php');
           exit();
