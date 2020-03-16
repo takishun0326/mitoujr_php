@@ -1,4 +1,7 @@
 <?php
+  //セッション開始
+  session_start();
+
   $root = $_SERVER['DOCUMENT_ROOT'];
   include("$root/pdo.php");
   $enable_referer = "$root/admin/managementScreen/admin.php";
@@ -49,6 +52,9 @@
     $add_manager->execute($params);
   }
 
+
+  if(isset($_POST["csrf_token"]) &&
+  $_POST["csrf_token"] === $_SESSION['csrf_token']){
       //adminIDから参照
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
       $checkOption = $_REQUEST["update-manager"];
@@ -58,7 +64,14 @@
         addManager();
       }
     }
-    $req = $pdo->query("SELECT * FROM adminlist");
+  }
+  // token
+  $toke_byte = openssl_random_pseudo_bytes(16);
+  $csrf_token = bin2hex($toke_byte);
+  // 生成したトークン保存
+  $_SESSION['csrf_token'] = $csrf_token;
+
+  $req = $pdo->query("SELECT * FROM adminlist");
 ?>
 
 <?php
@@ -100,6 +113,7 @@
   <input type="text" name="add-password" placeholder="password">
 
   <input type="hidden" value="ADD" name="update-manager">
+  <input type="hidden" value="<?=$csrf_token?>"name="csrf_token">
   <input type="submit" value = "管理者を追加"  onclick = "addManager()">
 </form>
 
